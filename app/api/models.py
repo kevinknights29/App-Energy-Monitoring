@@ -31,6 +31,14 @@ class Device(models.Model):
         ("other", "Other"),
     ]
 
+    room = models.ForeignKey(
+        to=Room,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="devices"
+    )
+
     name = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
     type = models.CharField(
@@ -57,24 +65,54 @@ class Device(models.Model):
     added = models.DateTimeField(
         auto_now_add=True
     )
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(
+        default=False
+    )
 
 
 class Sensor(models.Model):
+    SENSOR_TYPE_CHOICES = [
+        ("light", "Light"),
+        ("motion", "Motion"),
+        ("temperature", "Temperature"),
+        ("humidity", "Humidity"),
+        ("voltage", "Voltage"),
+        ("current", "Current"),
+        ("other", "Other"),
+    ]
+
+    room = models.ForeignKey(
+        to=Room,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="sensors"
+    )
+
     name = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
-    type = models.CharField(max_length=100)
+    type = models.CharField(
+        max_length=100,
+        choices=SENSOR_TYPE_CHOICES,
+        default="other"
+    )
     current = models.DecimalField(
         decimal_places=9,
         max_digits=18,
+        blank=True,
+        null=True,
     )
     voltage = models.DecimalField(
         decimal_places=9,
         max_digits=18,
+        blank=True,
+        null=True,
     )
     power = models.DecimalField(
         decimal_places=9,
         max_digits=18,
+        blank=True,
+        null=True,
     )
     description = models.TextField(
         default="",
@@ -83,11 +121,19 @@ class Sensor(models.Model):
     added = models.DateTimeField(
         auto_now_add=True
     )
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(
+        default=False
+    )
 
 
 class Measurement(models.Model):
-    sensor_id = models.IntegerField()
+    sensor = models.ForeignKey(
+        to=Sensor,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
+
     value = models.DecimalField(
         decimal_places=9,
         max_digits=18,
