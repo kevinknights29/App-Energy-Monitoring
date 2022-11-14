@@ -81,12 +81,13 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config("DBNAME"),
-        'USER': config("DBUSER"),
-        'PASSWORD': config("DBPASS"),
-        'HOST': config("DBHOST"),
-        'PORT': config("DBPORT"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config("DBNAME"),
+        "USER": config("DBUSER"),
+        "PASSWORD": config("DBPASS"),
+        "HOST": config("DBHOSTURL"),
+        "PORT": config("DBPORT"),
+        "OPTIONS": {"sslmode": "require"},
     }
 }
 
