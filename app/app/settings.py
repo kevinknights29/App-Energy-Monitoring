@@ -27,7 +27,7 @@ SECRET_KEY = config("DJANGOSECRET_KEY")
 DEBUG = config("DJANGODEBUG")
 
 ALLOWED_HOSTS = [
-    "app-energy-monitoring.azurewebsites.net"
+    "app-energy-monitoring-api.azurewebsites.net",
 ]
 
 
