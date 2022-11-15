@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 from decouple import config
 
@@ -27,6 +28,7 @@ SECRET_KEY = config("DJANGOSECRET_KEY")
 DEBUG = config("DJANGODEBUG")
 
 ALLOWED_HOSTS = [
+    os.environ["WEBSITE_HOSTNAME"],
     "app-energy-monitoring-api.azurewebsites.net",
 ]
 
