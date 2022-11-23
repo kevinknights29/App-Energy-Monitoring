@@ -30,19 +30,17 @@ class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
 
     def get_serializer_class(self):
-        if self.action == "add_room":
+        if self.action == "create":
             return RoomMiniSerializer
         return RoomSerializer
 
     @decorators.action(detail=True, methods=["POST"])
-    def add_room(self, request, pk=None):
-        self.serializer_class = RoomMiniSerializer
-        return response.Response(data=request, status=status.HTTP_200_OK)
+    def create(self, *args, **kwargs):
+        return viewsets.ModelViewSet.create(self, *args, **kwargs)
 
     @decorators.action(detail=True, methods=["GET"])
-    def get_rooms(self):
-        self.serializer_class = RoomSerializer
-        return response.Response(data=self.queryset, status=status.HTTP_200_OK)
+    def retrieve(self, *args, **kwargs):
+        return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
 
 
 class DeviceViewSet(viewsets.ModelViewSet):
