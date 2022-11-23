@@ -32,6 +32,12 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
+      - name: Load environment variables
+        run: |
+          set -o allexport
+          source .env
+          set +o allexport
+
       - name: Make Migrations
         run: |
           cd app/
