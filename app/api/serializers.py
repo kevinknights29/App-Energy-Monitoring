@@ -62,13 +62,13 @@ class RoomSerializer(serializers.ModelSerializer):
 
 
 class DeviceSerializer(serializers.ModelSerializer):
-    room = RoomMiniSerializer(many=False)
+    # room = RoomMiniSerializer(many=False)
 
     class Meta:
         model = Device
         fields = [
             "id",
-            "room",
+            # "room",
             "name",
             "brand",
             "type",
@@ -81,13 +81,13 @@ class DeviceSerializer(serializers.ModelSerializer):
 
 
 class SensorSerializer(serializers.ModelSerializer):
-    room = RoomMiniSerializer(many=False)
+    # room = RoomMiniSerializer(many=False)
 
     class Meta:
         model = Sensor
         fields = [
             "id",
-            "room",
+            # "room",
             "name",
             "brand",
             "type",
@@ -100,13 +100,13 @@ class SensorSerializer(serializers.ModelSerializer):
 
 
 class MeasurementSerializer(serializers.ModelSerializer):
-    sensor = SensorMeasurementSerializer(many=False)
+    # sensor = SensorMeasurementSerializer(many=False)
 
     class Meta:
         model = Measurement
         fields = [
             "id",
-            "sensor",
+            # "sensor",
             "value",
             "unit",
             "description",
