@@ -26,8 +26,13 @@ from .models import (
 
 
 class RoomViewSet(viewsets.ModelViewSet):
-    serializer_class = RoomSerializer
+    # serializer_class = RoomSerializer
     queryset = Room.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == "add_room":
+            return RoomMiniSerializer
+        return RoomSerializer
 
     @decorators.action(detail=True, methods=["POST"])
     def add_room(self, request, pk=None):
