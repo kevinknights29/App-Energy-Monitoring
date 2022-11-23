@@ -42,7 +42,7 @@ class RoomViewSet(viewsets.ModelViewSet):
 
     # @decorators.action(detail=True, methods=["GET"])
     def retrieve(self, request, pk=None, *args, **kwargs):
-        return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
+        return viewsets.ModelViewSet.retrieve(self, request, *args, **kwargs)
 
     def list(self, request, pk=None, *args, **kwargs):
         return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
