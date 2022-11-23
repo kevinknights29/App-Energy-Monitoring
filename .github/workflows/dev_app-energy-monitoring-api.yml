@@ -32,6 +32,19 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
+      - name: Make Migrations
+        run: |
+          cd app/
+          pyhton manage.py makemigrations
+          cd ..
+      
+
+      - name: Apply Migrations
+        run: |
+          cd app/
+          pyhton manage.py migrate
+          cd ..
+      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
