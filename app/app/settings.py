@@ -63,6 +63,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://app-energy-monitoring.azurewebsites.net/",
+    "http://localhost:3000/"
 ]
 
 ROOT_URLCONF = 'app.urls'
