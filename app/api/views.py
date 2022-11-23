@@ -26,26 +26,26 @@ from .models import (
 
 
 class RoomViewSet(viewsets.ModelViewSet):
-    # serializer_class = RoomSerializer
+    serializer_class = RoomMiniSerializer
     queryset = Room.objects.all()
 
-    def get_serializer_class(self):
-        if self.action == "retrieve":
-            return RoomSerializer
-        if self.action == "list":
-            return RoomSerializer
-        return RoomMiniSerializer
+    # def get_serializer_class(self):
+    #     if self.action == "retrieve":
+    #         return RoomSerializer
+    #     if self.action == "list":
+    #         return RoomSerializer
+    #     return RoomMiniSerializer
 
-    # @decorators.action(detail=True, methods=["POST"])
-    def create(self, request, pk=None, *args, **kwargs):
-        return viewsets.ModelViewSet.create(self, *args, **kwargs)
+    # # @decorators.action(detail=True, methods=["POST"])
+    # def create(self, request, pk=None, *args, **kwargs):
+    #     return viewsets.ModelViewSet.create(self, *args, **kwargs)
 
-    # @decorators.action(detail=True, methods=["GET"])
-    # def retrieve(self, request, pk=None, *args, **kwargs):
-    #     return viewsets.ModelViewSet.retrieve(self, request, *args, **kwargs)
+    # # @decorators.action(detail=True, methods=["GET"])
+    # # def retrieve(self, request, pk=None, *args, **kwargs):
+    # #     return viewsets.ModelViewSet.retrieve(self, request, *args, **kwargs)
 
-    def list(self, request, pk=None, *args, **kwargs):
-        return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
+    # def list(self, request, pk=None, *args, **kwargs):
+    #     return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
 
 
 class DeviceViewSet(viewsets.ModelViewSet):
