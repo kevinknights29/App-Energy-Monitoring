@@ -28,8 +28,10 @@ SECRET_KEY = config("DJANGOSECRET_KEY")
 DEBUG = config("DJANGODEBUG")
 
 ALLOWED_HOSTS = [
-    os.environ["WEBSITE_HOSTNAME"],
-    "app-energy-monitoring-api.azurewebsites.net",
+    os.getenv(
+        "WEBSITE_HOSTNAME",
+        "app-energy-monitoring-api.azurewebsites.net"
+    )
 ]
 
 

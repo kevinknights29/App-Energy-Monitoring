@@ -32,25 +32,6 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
-      - name: Load environment variables
-        run: |
-          set -o allexport
-          source .env
-          set +o allexport
-
-      - name: Make Migrations
-        run: |
-          cd app/
-          python manage.py makemigrations
-          cd ..
-      
-
-      - name: Apply Migrations
-        run: |
-          cd app/
-          python manage.py migrate
-          cd ..
-      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
