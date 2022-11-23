@@ -37,14 +37,14 @@ class RoomViewSet(viewsets.ModelViewSet):
         return RoomMiniSerializer
 
     # @decorators.action(detail=True, methods=["POST"])
-    def create(self, pk=None, *args, **kwargs):
+    def create(self, request, pk=None, *args, **kwargs):
         return viewsets.ModelViewSet.create(self, *args, **kwargs)
 
     # @decorators.action(detail=True, methods=["GET"])
-    def retrieve(self, pk=None, *args, **kwargs):
+    def retrieve(self, request, pk=None, *args, **kwargs):
         return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
 
-    def list(self, pk=None, *args, **kwargs):
+    def list(self, request, pk=None, *args, **kwargs):
         return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
 
 
