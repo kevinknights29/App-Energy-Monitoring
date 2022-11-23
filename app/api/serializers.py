@@ -107,6 +107,8 @@ class MeasurementSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "datetime",
+            "date",
+            "time",
             # "sensor",
             "value",
             "unit",
